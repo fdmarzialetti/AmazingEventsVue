@@ -24,30 +24,30 @@ createApp({
             this.largerCapacity=data.events.sort((e1,e2)=>e2.capacity-e1.capacity)[0]
             this.lowestPercentage=evsByAttPcent[0]
             this.higherPercentage=evsByAttPcent[evsByAttPcent.length-1]
-
-            function accumulator(eventList){
-                let accum={"revenues":0,"percentArray":[]}
-                eventList.forEach(e => {
-                    accum.revenues+=(e.estimate?e.estimate:e.assistance)*e.price
-                    accum.percentArray.push(((e.estimate?e.estimate:e.assistance)*100/e.capacity))
-                });
-                accum.prom= accum.percentArray.reduce((accum, percent) => accum + percent, 0);
-                accum.prom=(accum.prom/accum.percentArray.length).toFixed(2)
-                return accum
-            }
-            
-            function createCategoryStats(events,list){
-                let setCategory= Array.from(new Set(events.map(e=>e.category).sort()))
-                setCategory.forEach(category=>{
-                    let categoryStats=accumulator(events.filter(e=>e.category===category))
-                    categoryStats.name=category
-                    list.push(categoryStats)
-                })
-            }
-            
-            createCategoryStats(this.events.filter(e=>e.estimate), this.upcommingStats)
-            createCategoryStats(this.events.filter(e=>e.assistance), this.pastStats)
+            this.createCategoryStats(this.events.filter(e=>e.estimate), this.upcommingStats)
+            this.createCategoryStats(this.events.filter(e=>e.assistance), this.pastStats)
             }
         )
+        
+    },
+    methods:{
+        accumulator:function (eventList){
+            let accum={"revenues":0,"percentArray":[]}
+            eventList.forEach(e => {
+                accum.revenues+=(e.estimate?e.estimate:e.assistance)*e.price
+                accum.percentArray.push(((e.estimate?e.estimate:e.assistance)*100/e.capacity))
+            });
+            accum.prom= accum.percentArray.reduce((accum, percent) => accum + percent, 0);
+            accum.prom=(accum.prom/accum.percentArray.length).toFixed(2)
+            return accum
+        },
+        createCategoryStats:function (events,list){
+            let setCategory= Array.from(new Set(events.map(e=>e.category).sort()))
+            setCategory.forEach(category=>{
+                let categoryStats=this.accumulator(events.filter(e=>e.category===category))
+                categoryStats.name=category
+                list.push(categoryStats)
+            })
+        }
     }
 }).mount('#app')
