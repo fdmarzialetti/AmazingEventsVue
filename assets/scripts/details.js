@@ -3,7 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            eventDetail:undefined,
+            event:undefined,
             idCard:""
             
         }
@@ -13,9 +13,7 @@ createApp({
         .then(response=>response.json())
         .then(data=>{
             this.idCard=new URLSearchParams(location.search).get("id");
-            this.eventDetail=data.events.filter(e=>e._id===this.idCard)
-            console.log(idCard)
-            console.log(eventDetail)
+            this.event=data.events.find(e=>e._id===this.idCard)
         })
     }
 }).mount('#app')

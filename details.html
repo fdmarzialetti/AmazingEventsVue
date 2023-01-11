@@ -50,7 +50,7 @@
         <main>
             <!--CARD DETAILS-->
             <div id="detailsContainer" class="row w-100 p-1 mt-2 justify-content-center">
-                <template v-for="event of eventDetail">
+                <template v-if="event">
                     <div class="col col-lg-10">
                         <div class="card card-detail">
                             <img :src="event.image" alt="event.name +' image'">
