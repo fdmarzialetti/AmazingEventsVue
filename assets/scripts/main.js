@@ -7,7 +7,8 @@ createApp({
             searchValue:"",
             categoryList:[],
             eventsFiltered:[],
-            checkeds:[]
+            checkeds:[],
+            noMatchesFoundMsg:false
         }
     },
     created(){
@@ -37,7 +38,12 @@ createApp({
             }else{
                 let filterByCheckbox = filterBySearch.filter(e=>this.checkeds.includes(e.category))
                 this.eventsFiltered=filterByCheckbox
-            }   
+            } 
+            if(this.eventsFiltered.length===0){
+                this.noMatchesFoundMsg=true
+            }else{
+                this.noMatchesFoundMsg=false
+            }
         }       
     }
 }).mount('#app')

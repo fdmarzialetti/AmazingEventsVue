@@ -67,6 +67,7 @@
                 </div>
             </div>
             <!--CARDS-->
+            <h2 class="mt-4" v-if="noMatchesFoundMsg">No matches found</h2>
             <div id="cards-container" class="row w-100 p-1">
                 <template v-for="event of eventsFiltered">
                     <div class="col col-md-6 col-lg-3">
