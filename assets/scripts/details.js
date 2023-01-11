@@ -5,6 +5,7 @@ createApp({
         return {
             eventDetail:undefined,
             idCard:""
+            
         }
     },
     created(){
