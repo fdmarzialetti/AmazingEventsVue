@@ -8,6 +8,7 @@ createApp({
             categoryList:[],
             eventsFiltered:[],
             checkeds:[],
+            noFoundMsg:"Loading data..."
         }
     },
     created(){
@@ -27,6 +28,7 @@ createApp({
                 }
             this.categoryList=Array.from(new Set(this.events.map(e=>e.category)))
             this.eventsFiltered=this.events
+            this.noFoundMsg="No matches found"
         })
     },
     methods:{

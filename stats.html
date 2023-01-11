@@ -67,7 +67,7 @@
                     </tr>
                 </thead>
                 <tbody id="generalStats">
-                    <template v-if="higherPercentage">
+                    <template v-if="loadData">
                         <tr>
                             <td>{{higherPercentage.name}}: {{higherPercentage.percent}}%</td>
                             <td>{{lowestPercentage.name}}: {{lowestPercentage.percent}}%</td>

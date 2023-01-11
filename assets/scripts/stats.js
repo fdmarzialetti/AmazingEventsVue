@@ -8,7 +8,8 @@ createApp({
             lowestPercentage:{},
             higherPercentage:{},
             upcommingStats:[],
-            pastStats:[]
+            pastStats:[],
+            loadData:false
         }
     },
     created(){
@@ -26,6 +27,7 @@ createApp({
             this.higherPercentage=evsByAttPcent[evsByAttPcent.length-1]
             this.createCategoryStats(this.events.filter(e=>e.estimate), this.upcommingStats)
             this.createCategoryStats(this.events.filter(e=>e.assistance), this.pastStats)
+            this.loadData=true
             }
         )
         
