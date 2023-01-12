@@ -53,8 +53,11 @@
                 <h1 class="text-center">Stats</h1>
             </div>
             <!--LOADER-->
-            <img class="mt-5" v-if="!loadData" src="./assets/images/loader.gif"></img>
-
+            <img class="mt-5" v-if="!loadData && !failPromise" src="./assets/images/loader.gif"></img>
+            <!--FAIL PROMISE MSG-->
+            <template v-if="failPromise" >
+                <h2 class="p-5 text-center">Sorry, we can't connect to the database. Try again later</h2>
+            </template>
             <div class="table-responsive mt-4 mb-4 ps-1 pe-1">
                 <!--TABLES-->
                 <!--General Table-->

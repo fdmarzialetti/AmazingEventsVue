@@ -9,22 +9,22 @@ createApp({
             categoryList: [],
             eventsFiltered: [],
             checkeds: [],
-            noFoundMsg: "",
-            loadData:false
+            loadData:false,
+            failPromise:null,
         }
     },
     created() {
         fetch('https://mindhub-xj03.onrender.com/api/amazing')
             .then(response => response.json())
             .then(data => {
+                this.failPromise=false
                 this.pathname = location.pathname
                 this.events = this.eventsByTittlePage(document.getElementById("tittle").innerHTML, data)
                 this.categoryList = Array.from(new Set(this.events.map(e => e.category)))
                 this.eventsFiltered = this.events
                 this.loadData=true
-                this.noFoundMsg="No matches found"
             })
-            .catch(err=>console.log(err))
+            .catch(err=>this.failPromise=true)
     },
     methods: {
         applyFilter: function () {

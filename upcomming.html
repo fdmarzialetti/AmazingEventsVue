@@ -52,7 +52,7 @@
                 <h1 id="tittle" class="text-center">Upcomming Events</h1>
             </div>
             <!--LOADER-->
-            <img class="mt-5" v-if="!loadData" src="./assets/images/loader.gif"></img>
+            <img class="mt-5" v-if="!loadData && !failPromise" src="./assets/images/loader.gif"></img>
             <!--FILTER-->
             <div class="chk-search-container d-flex justify-content-between w-100">
                 <!--CHECKBOXS-->
@@ -60,11 +60,12 @@
                     role="group" aria-label="Basic checkbox toggle button group">
                     <template v-for="category of categoryList">
                         <input v-model="checkeds" type="checkbox" class="btn-check" :id="category" :value="category">
-                        <label class="checkboxProp btn btn-outline-danger rounded-2" :for="category">{{category}}</label>
+                        <label class="checkboxProp btn btn-outline-danger rounded-2"
+                            :for="category">{{category}}</label>
                     </template>
                 </div>
                 <!--SEARCHBAR-->
-                <template v-if="loadData">
+                <template v-if="loadData && !failPromise">
                     <div class="d-flex col-12 col-md-10 col-lg-2" role="search">
                         <input @input="applyFilter" v-model="searchValue" id="searchBar" class="form-control me-2"
                             placeholder="Search" aria-label="Search">
@@ -72,6 +73,14 @@
                 </template>
 
             </div>
+            <!--NO MATCHES FOUND MSG-->
+            <template v-if="eventsFiltered.length===0 && !failPromise && loadData" >
+                <h2 class="p-5 text-center">No matches found</h2>
+            </template>
+            <!--FAIL PROMISE MSG-->
+            <template v-if="failPromise" >
+                <h2 class="p-5 text-center">Sorry, we can't connect to the database. Try again later</h2>
+            </template>
             <!--CARDS-->
             <template v-if="eventsFiltered.length===0">
                 <h2 class="mt-4">{{noFoundMsg}}</h2>

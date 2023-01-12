@@ -10,12 +10,14 @@ createApp({
             upcommingStats: [],
             pastStats: [],
             loadData: false,
+            failPromise:null
         }
     },
     created() {
         fetch('https://mindhub-xj03.onrender.com/api/amazing')
             .then(response => response.json())
             .then(data => {
+                this.failPromise=false
                 this.events = data.events
                 // agrego la propiedad percent a los eventos
                 this.events.forEach(e => e.percent = (e.assistance * 100 / e.capacity).toFixed(2))
@@ -30,7 +32,7 @@ createApp({
                 this.loadData = true
             }
             )
-            .catch(err=>console.log(err))
+            .catch(err=>this.failPromise=true)
     },
     methods: {
         accumulator: function (eventList) {

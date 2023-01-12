@@ -48,8 +48,16 @@
         </header>
     <div id="app">
         <main>
+            <!--TITTLE-->
+            <div class="tittle-container">
+                <h1 id="tittle" class="text-center">Details</h1>
+            </div>
             <!--LOADER-->
-            <img class="mt-5" v-if="!loadData" src="./assets/images/loader.gif"></img>
+            <img class="mt-5" v-if="!loadData && !failPromise" src="./assets/images/loader.gif"></img>
+            <!--FAIL PROMISE MSG-->
+            <template v-if="failPromise" >
+                <h2 class="p-5 text-center">Sorry, we can't connect to the database. Try again later</h2>
+            </template>
             <!--CARD DETAILS-->
             <div id="detailsContainer" class="row w-100 p-1 mt-2 justify-content-center">
                 <template v-if="event">
@@ -78,7 +86,7 @@
             </div>
         </main>
 
-        <footer>
+        <footer class="mt-4">
             <div class="social-container">
                 <a href="https://web.whatsapp.com/" target="_blank" class="btn btn-secondary wpp">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
