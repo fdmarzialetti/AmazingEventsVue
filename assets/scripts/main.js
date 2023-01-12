@@ -22,11 +22,9 @@ createApp({
                 this.categoryList = Array.from(new Set(this.events.map(e => e.category)))
                 this.eventsFiltered = this.events
                 this.loadData=true
+                this.noFoundMsg="No matches found"
             })
             .catch(err=>console.log(err))
-    },
-    update() {
-        this.noFoundMsg="No matches found"
     },
     methods: {
         applyFilter: function () {
