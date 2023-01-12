@@ -3,6 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            pathname:"",
             events:[],
             searchValue:"",
             categoryList:[],
@@ -15,6 +16,7 @@ createApp({
         fetch('https://mindhub-xj03.onrender.com/api/amazing')
         .then(response=>response.json())
         .then(data=>{
+            this.pathname=location.pathname
             this.events=this.eventsByTittlePage(document.getElementById("tittle").innerHTML, data)
             this.categoryList=Array.from(new Set(this.events.map(e=>e.category)))
             this.eventsFiltered=this.events
@@ -33,11 +35,11 @@ createApp({
                 this.eventsFiltered=filterByCheckbox
             } 
         },
-        eventsByTittlePage: function(tittle,data){
+        eventsByTittlePage: function(tittle, data){
             switch(tittle){
-                case "Home": 
+                case "Home":     
                     return data.events
-                case "Upcomming Events": 
+                case "Upcomming Events":     
                     return data.events.filter(e=>e.date>=data.currentDate)
                 case "Past Events": 
                     return data.events.filter(e=>e.date<data.currentDate)
