@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -8,32 +8,32 @@
     --mainColor: #DC3545;
 }
 
-body{
+body {
     background-color: rgb(236, 236, 236);
 }
 
-header{
+header {
     padding: 0 1em;
     background-color: rgb(236, 236, 236);
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
 }
 
-nav{
+nav {
     display: flex;
     justify-content: space-between;
 }
 
 
-.navbar-brand img{
+.navbar-brand img {
     height: 2em;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     transition: 0.3s;
-    color:var(--mainColor);
+    color: var(--mainColor);
 }
 
-.tittle-container{
+.tittle-container {
     width: 100%;
     background-color: var(--mainColor);
     color: white;
@@ -43,58 +43,58 @@ nav{
     align-items: center;
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:1em;
+    gap: 1em;
     min-height: 90vh;
 }
 
-.chk-search-container{
+.chk-search-container {
     padding: 0 2em;
-    gap:1em;
+    gap: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.btn-group{
+.btn-group {
     width: 100%;
-    gap:0.2em
+    gap: 0.2em
 }
 
 /* .btn-group button{
-    transition: none;
+transition: none;
 }
 
 .btn-group button:checked{
-    transition: none;
+transition: none;
 } */
 
-form{
-    width:100%;
+form {
+    width: 100%;
 }
 
-.checkboxProp{
+.checkboxProp {
     word-wrap: break-word;
     background-color: white;
 }
 
 
-.checkboxProp:hover{ 
-    transition:0.3s;
+.checkboxProp:hover {
+    transition: 0.3s;
     box-shadow: var(--mainColor)inset 0px -1px 1px;
 }
 
 
-.cards-container{
+.cards-container {
     width: 100%;
-    gap:1em;
+    gap: 1em;
 }
 
-.card{
-    margin:1em 0;
+.card {
+    margin: 1em 0;
     border-radius: 0 2em;
     height: 25em;
     border: none;
@@ -102,16 +102,16 @@ form{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.card:hover{
-    transition:0.4s;
+.card:hover {
+    transition: 0.4s;
     transform: scale(1.02);
 }
 
-.card-body{
-    padding:0 1em 1em 1em;
+.card-body {
+    padding: 0 1em 1em 1em;
 }
 
-.card-body .card-text{
+.card-body .card-text {
     max-height: 6em;
     max-width: 100%;
     display: -webkit-box !important;
@@ -121,116 +121,119 @@ form{
     text-overflow: ellipsis;
 }
 
-.card img{
+.card img {
     margin: 1em;
     border-radius: 0 2em;
     height: 12em;
-    object-fit:cover;
+    object-fit: cover;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.card-detail{
+.card-detail {
     height: 40em;
 }
 
-.card-detail:hover{
-    transition:none;
-    transform:none;
+.card-detail:hover {
+    transition: none;
+    transform: none;
 }
 
 
-footer{
+footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color:  rgb(20, 20, 20);
+    background-color: rgb(20, 20, 20);
     height: 8em;
     color: white;
     padding: 2em;
-    gap:1em;
+    gap: 1em;
 }
 
-.social-container{
+.social-container {
     width: 10em;
     display: flex;
     justify-content: space-between;
 }
 
-.social-container a{
+.social-container a {
     border-radius: 60%;
-    
+
 }
 
-.social-container a:hover{
+.social-container a:hover {
     transition: 0.5s;
     box-shadow: rgb(209, 209, 209) 0px 5px 18px -8px;
     border: 1px solid rgb(104, 104, 104);
 }
-    
 
-.social-container svg{
+
+.social-container svg {
     margin-bottom: 0.15em;
 }
 
-.wpp:hover{
+.wpp:hover {
     color: rgb(20, 20, 20);
     background-color: rgb(121, 255, 111);
 }
 
-.ig:hover{
+.ig:hover {
     color: rgb(20, 20, 20);
     background-color: rgb(255, 111, 209);
 }
 
-.fb:hover{
+.fb:hover {
     color: rgb(20, 20, 20);
     background-color: rgb(111, 219, 255);
 }
 
-table,th,tr,td{
+table,
+th,
+tr,
+td {
     border: 1px solid rgb(160, 160, 160);
     border-collapse: collapse;
 }
 
-.table td{
+.table td {
     background-color: white;
 }
 
-.table-subtittle td{
+.table-subtittle td {
     background-color: #dffcf6;
 }
 
-.table-subtittle td{
+.table-subtittle td {
     background-color: #dffcf6;
 }
 
 
-.table th{
+.table th {
     color: white;
     background-color: #246457;
 }
 
-.notFoundMsg{
-    color:rgb(49, 49, 49)
+.notFoundMsg {
+    color: rgb(49, 49, 49)
 }
 
-@media (min-width:768px){
-    .table{
+@media (min-width:768px) {
+    .table {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     }
 
-    footer{
+    footer {
         flex-direction: row;
     }
 
-    .card-detail{
+    .card-detail {
         flex-direction: row;
         justify-content: space-evenly;
         height: 28em;
         padding-top: 2em;
         padding-bottom: 0.5em;
-        
+
     }
 
     .card-detail img {
@@ -240,24 +243,25 @@ table,th,tr,td{
         width: 40%;
     }
 
-    .card-detail .card-body{
-        padding-top:0;
+    .card-detail .card-body {
+        padding-top: 0;
         border-top: none;
         max-width: 25em;
     }
 
-    footer{
+    footer {
         height: 6em;
-        
+
     }
 
 }
 
-@media (min-width:1024px){
-    .chk-search-container{
+@media (min-width:1024px) {
+    .chk-search-container {
         flex-direction: row;
     }
-    form{
+
+    form {
         width: 25em;
     }
 
