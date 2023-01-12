@@ -9,7 +9,10 @@ createApp({
             categoryList: [],
             eventsFiltered: [],
             checkeds: [],
-            noFoundMsg: "Loading data..."
+            noFoundMsg: "",
+            errorMsg:"",
+            loadData:false
+
         }
     },
     created() {
@@ -21,9 +24,11 @@ createApp({
                 this.categoryList = Array.from(new Set(this.events.map(e => e.category)))
                 this.eventsFiltered = this.events
             })
+            .catch(err=>this.errorMsg=err)
     },
     updated() {
-        this.noFoundMsg = "No matches found"
+        this.loadData=true
+        this.noFoundMsg="No matches found"
     },
     methods: {
         applyFilter: function () {

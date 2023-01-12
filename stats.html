@@ -52,76 +52,77 @@
             <div class="tittle-container">
                 <h1 class="text-center">Stats</h1>
             </div>
+            <!--LOADER-->
+            <img class="mt-5" v-if="!loadData" src="./assets/images/loader.gif"></img>
 
             <div class="table-responsive mt-4 mb-4 ps-1 pe-1">
                 <!--TABLES-->
                 <!--General Table-->
-                <table class="table table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th colspan="3">Event Statistics</th>
-                        </tr>
-                        <tr class="table-subtittle">
-                            <td>Events with the highest percentage of attendance</td>
-                            <td>Events with the lowest percentage of attendance</td>
-                            <td>Event with larger capacity</td>
-                        </tr>
-                    </thead>
-                    <tbody id="generalStats">
-                        <template v-if="loadData">
+                <template v-if="loadData">
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Event Statistics</th>
+                            </tr>
+                            <tr class="table-subtittle">
+                                <td>Events with the highest percentage of attendance</td>
+                                <td>Events with the lowest percentage of attendance</td>
+                                <td>Event with larger capacity</td>
+                            </tr>
+                        </thead>
+                        <tbody id="generalStats">
                             <tr>
                                 <td>{{higherPercentage.name}}: {{higherPercentage.percent}}%</td>
                                 <td>{{lowestPercentage.name}}: {{lowestPercentage.percent}}%</td>
                                 <td>{{largerCapacity.name}}: {{largerCapacity.capacity}}</td>
                             </tr>
-                        </template>
-                    </tbody>
-                </table>
-                <!--Upcomming Table-->
-                <table class="table table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th colspan="3">Upcomming Events Statistics By Category</th>
-                        </tr>
-                        <tr class="table-subtittle">
-                            <td>Categories</td>
-                            <td>Revenues</td>
-                            <td>Porcentage of audience</td>
-                        </tr>
-                    </thead>
-                    <tbody id="upcommingStats">
-                        <template v-for="stat of upcommingStats">
+                        </tbody>
+                    </table>
+                    <!--Upcomming Table-->
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Upcomming Events Statistics By Category</th>
+                            </tr>
+                            <tr class="table-subtittle">
+                                <td>Categories</td>
+                                <td>Revenues</td>
+                                <td>Porcentage of audience</td>
+                            </tr>
+                        </thead>
+                        <tbody id="upcommingStats" v-for="stat of upcommingStats">
                             <tr>
                                 <td>{{stat.name}}</td>
                                 <td>${{stat.revenues}}</td>
                                 <td>{{stat.prom}}%</td>
                             </tr>
-                        </template>
-                    </tbody>
-                </table>
-                <!--Past Table-->
-                <table class="table table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th colspan="3">Past Events Statistics By Category</th>
-                        </tr>
-                        <tr class="table-subtittle">
-                            <td>Categories</td>
-                            <td>Revenues</td>
-                            <td>Porcentage of audience</td>
-                        </tr>
-                    </thead>
-                    <tbody id="pastStats">
-                        <template v-for="stat of pastStats">
+
+                        </tbody>
+                    </table>
+                    <!--Past Table-->
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Past Events Statistics By Category</th>
+                            </tr>
+                            <tr class="table-subtittle">
+                                <td>Categories</td>
+                                <td>Revenues</td>
+                                <td>Porcentage of audience</td>
+                            </tr>
+                        </thead>
+                        <tbody id="pastStats" v-for="stat of pastStats">
                             <tr>
                                 <td>{{stat.name}}</td>
                                 <td>${{stat.revenues}}</td>
                                 <td>{{stat.prom}}%</td>
                             </tr>
-                        </template>
-                    </tbody>
-                </table>
+
+                        </tbody>
+                    </table>
+                </template>
             </div>
+
 
         </main>
 

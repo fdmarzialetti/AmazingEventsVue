@@ -51,6 +51,8 @@
             <div class="tittle-container">
                 <h1 id="tittle" class="text-center">Past Events</h1>
             </div>
+            <!--LOADER-->
+            <img class="mt-5" v-if="!loadData" src="./assets/images/loader.gif"></img>
             <!--FILTER-->
             <div class="chk-search-container d-flex justify-content-between w-100">
                 <!--CHECKBOXS-->
@@ -63,10 +65,13 @@
                     </template>
                 </div>
                 <!--SEARCHBAR-->
-                <div class="d-flex col-12 col-md-10 col-lg-2" role="search">
-                    <input @input="applyFilter" v-model="searchValue" id="searchBar" class="form-control me-2"
-                        placeholder="Search" aria-label="Search">
-                </div>
+                <template v-if="loadData">
+                    <div class="d-flex col-12 col-md-10 col-lg-2" role="search">
+                        <input @input="applyFilter" v-model="searchValue" id="searchBar" class="form-control me-2"
+                            placeholder="Search" aria-label="Search">
+                    </div>
+                </template>
+
             </div>
             <!--CARDS-->
             <template v-if="eventsFiltered.length===0">
