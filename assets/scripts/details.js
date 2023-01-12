@@ -5,7 +5,8 @@ createApp({
         return {
             event: undefined,
             backPathname: "",
-            idCard: ""
+            idCard: "",
+            loadData:false
         }
     },
     created() {
@@ -15,6 +16,7 @@ createApp({
                 this.backPathname = new URLSearchParams(location.search).get("backPathname")
                 this.idCard = new URLSearchParams(location.search).get("id")
                 this.event = data.events.find(e => e._id === this.idCard)
+                this.loadData=true
             })
     }
 }).mount('#app')
