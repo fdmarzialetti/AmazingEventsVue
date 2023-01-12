@@ -10,9 +10,7 @@ createApp({
             eventsFiltered: [],
             checkeds: [],
             noFoundMsg: "",
-            errorMsg:"",
             loadData:false
-
         }
     },
     created() {
@@ -23,11 +21,11 @@ createApp({
                 this.events = this.eventsByTittlePage(document.getElementById("tittle").innerHTML, data)
                 this.categoryList = Array.from(new Set(this.events.map(e => e.category)))
                 this.eventsFiltered = this.events
+                this.loadData=true
             })
-            .catch(err=>this.errorMsg=err)
+            .catch(err=>console.log(err))
     },
-    updated() {
-        this.loadData=true
+    update() {
         this.noFoundMsg="No matches found"
     },
     methods: {
