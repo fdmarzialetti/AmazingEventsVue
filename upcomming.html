@@ -60,8 +60,7 @@
                     role="group" aria-label="Basic checkbox toggle button group">
                     <template v-for="category of categoryList">
                         <input v-model="checkeds" type="checkbox" class="btn-check" :id="category" :value="category">
-                        <label class="checkboxProp btn btn-outline-danger rounded-2"
-                            :for="category">{{category}}</label>
+                        <label class="checkboxProp btn btn-outline-danger rounded-2" :for="category">{{category}}</label>
                     </template>
                 </div>
                 <!--SEARCHBAR-->
@@ -87,8 +86,7 @@
                                 <p class="card-text h-100">{{event.description}}</p>
                                 <div class=" card-bottom d-flex justify-content-between align-items-center w-100">
                                     <p class="m-0 fw-bold text-align-center">Price: ${{event.price}}</p>
-                                    <a :href="'./details.html?id='+event._id+'&backPathname='+pathname"
-                                        class="btn btn-danger">View more</a>
+                                    <a :href="'./details.html?id='+event._id+'&backPathname='+pathname" class="btn btn-danger">View more</a>
                                 </div>
                             </div>
                         </div>
