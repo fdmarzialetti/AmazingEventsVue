@@ -10,7 +10,6 @@ createApp({
             upcommingStats: [],
             pastStats: [],
             loadData: false,
-            errorMsg:""
         }
     },
     created() {
@@ -31,7 +30,7 @@ createApp({
                 this.loadData = true
             }
             )
-            .catch(err => this.errorMsg = err)
+            .catch(err=>console.log(err))
     },
     methods: {
         accumulator: function (eventList) {
