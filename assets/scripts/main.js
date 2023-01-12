@@ -3,7 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            pathname: "",
+            pathname:"",
             events: [],
             searchValue: "",
             categoryList: [],
@@ -24,6 +24,9 @@ createApp({
                 this.categoryList = Array.from(new Set(this.events.map(e => e.category)))
                 this.eventsFiltered = this.events
                 this.loadData=true
+                if(localStorage.getItem("favEvents")){
+                    this.favEvents=JSON.parse(localStorage.getItem("favEvents"))
+                }
             })
             .catch(err=>this.failPromise=true)
     },
@@ -48,12 +51,13 @@ createApp({
             }
         },
         addToFavorite:function(event){
-            if(this.favEvents.includes(event)){
+            if(this.favEvents.some(f=>f._id===event._id)){
                 this.favEvents=this.favEvents.filter(f=>f._id!==event._id)
+                localStorage.setItem("favEvents", JSON.stringify(this.favEvents));
             }else{
                 this.favEvents.push(event)
+                localStorage.setItem("favEvents", JSON.stringify(this.favEvents));
             }
-            console.log(this.favEvents)
         }
     }
 }).mount('#app')
