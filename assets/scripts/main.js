@@ -9,8 +9,9 @@ createApp({
             categoryList: [],
             eventsFiltered: [],
             checkeds: [],
+            favEvents:[],
             loadData:false,
-            failPromise:null,
+            failPromise:null
         }
     },
     created() {
@@ -45,6 +46,14 @@ createApp({
                 case "Past Events":
                     return data.events.filter(e => e.date < data.currentDate)
             }
+        },
+        addToFavorite:function(event){
+            if(this.favEvents.includes(event)){
+                this.favEvents=this.favEvents.filter(f=>f._id!==event._id)
+            }else{
+                this.favEvents.push(event)
+            }
+            console.log(this.favEvents)
         }
     }
 }).mount('#app')
