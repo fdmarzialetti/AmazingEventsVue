@@ -27,14 +27,15 @@ createApp({
             this.higherPercentage=evsByAttPcent[evsByAttPcent.length-1]
             this.createCategoryStats(this.events.filter(e=>e.estimate), this.upcommingStats)
             this.createCategoryStats(this.events.filter(e=>e.assistance), this.pastStats)
-            this.loadData=true
             }
         )
-        
+    },
+    updated(){
+        this.loadData=true
     },
     methods:{
         accumulator:function (eventList){
-            let accum={"revenues":0,"percentArray":[]}
+            let accum={"revenues":0,"percentArray":[],"prom":0}
             eventList.forEach(e => {
                 accum.revenues+=(e.estimate?e.estimate:e.assistance)*e.price
                 accum.percentArray.push(((e.estimate?e.estimate:e.assistance)*100/e.capacity))

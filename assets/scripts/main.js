@@ -15,21 +15,13 @@ createApp({
         fetch('https://mindhub-xj03.onrender.com/api/amazing')
         .then(response=>response.json())
         .then(data=>{
-            switch(document.getElementById("tittle").innerHTML){
-                case "Home": 
-                    this.events=data.events 
-                break;
-                case "Upcomming Events": 
-                    this.events=data.events.filter(e=>e.date>=data.currentDate)
-                break;
-                case "Past Events": 
-                    this.events=data.events.filter(e=>e.date<data.currentDate)
-                break;
-                }
+            this.events=this.eventsByTittlePage(document.getElementById("tittle").innerHTML, data)
             this.categoryList=Array.from(new Set(this.events.map(e=>e.category)))
             this.eventsFiltered=this.events
-            this.noFoundMsg="No matches found"
         })
+    },
+    updated(){
+        this.noFoundMsg="No matches found"
     },
     methods:{
         applyFilter: function(){
@@ -40,6 +32,16 @@ createApp({
                 let filterByCheckbox = filterBySearch.filter(e=>this.checkeds.includes(e.category))
                 this.eventsFiltered=filterByCheckbox
             } 
-        }       
+        },
+        eventsByTittlePage: function(tittle,data){
+            switch(tittle){
+                case "Home": 
+                    return data.events
+                case "Upcomming Events": 
+                    return data.events.filter(e=>e.date>=data.currentDate)
+                case "Past Events": 
+                    return data.events.filter(e=>e.date<data.currentDate)
+                }
+        }
     }
 }).mount('#app')
