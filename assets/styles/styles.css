@@ -218,13 +218,69 @@ td {
     color: rgb(49, 49, 49)
 }
 
+.modalCard {
+    background-color: rgb(241, 241, 241);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+}
+
+.modalCard img {
+    height: 10em;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.modal-title {
+    color: white;
+    width: 85%;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 0.5em;
+}
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 0.5em;
+    right: 1.2em;
+
+}
+
 @media (min-width:768px) {
     .table {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     }
 
+    .modalCard img {
+        width: 50%;
+    }
+
+    .modal-title {
+        text-align: center;
+        width: 90%;
+        font-weight: bolder;
+    }
+
+    #btn-back-to-top {
+        bottom: 1.2em;
+        right: 1.5em;
+    }
+
+    .cardBody {
+        height: 9em;
+    }
+
     footer {
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2em;
+        height: 6em;
+    }
+
+    footer h3 {
+        margin-right: 2.5em;
+        margin-bottom: 0;
     }
 
     .card-detail {
@@ -247,11 +303,6 @@ td {
         padding-top: 0;
         border-top: none;
         max-width: 25em;
-    }
-
-    footer {
-        height: 6em;
-
     }
 
 }
