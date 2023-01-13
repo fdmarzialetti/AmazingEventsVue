@@ -143,7 +143,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items:flex-start;
     background-color: rgb(20, 20, 20);
     height: 8em;
     color: white;
@@ -241,9 +241,13 @@ td {
 
 #btn-back-to-top {
     position: fixed;
-    bottom: 0.5em;
+    bottom: 1em;
     right: 1.2em;
 
+}
+
+#btn-back-to-top span{
+    font-family:cursive;
 }
 
 @media (min-width:768px) {
@@ -262,8 +266,8 @@ td {
     }
 
     #btn-back-to-top {
-        bottom: 1.2em;
-        right: 1.5em;
+        bottom: 1.1em;
+        right: 1em;
     }
 
     .cardBody {
@@ -279,7 +283,7 @@ td {
     }
 
     footer h3 {
-        margin-right: 2.5em;
+        margin-right: 2.6em;
         margin-bottom: 0;
     }
 

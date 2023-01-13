@@ -109,11 +109,17 @@
         </main>
         <!-- MODAL BUTTON -->
         <template v-if="loadData && !failPromise">
-            <button type="button" id="btn-back-to-top"
-                :class="favEvents.length===0?'btn disabled btn-floating btn-lg rounded-circle btn-secondary bg-gradient':'btn btn-floating btn-lg rounded-circle btn-success bg-gradient'"
-                data-bs-toggle="modal" data-bs-target="#myModal">
-                <i class="fa fa-heart"></i>
-            </button>
+            <div id="btn-back-to-top" class="d-flex flex-column align-items-center">
+                <button type="button"
+                    :class="favEvents.length===0?'btn disabled btn-lg rounded-circle btn-secondary bg-gradient':'btn btn-lg rounded-circle btn-success bg-gradient'"
+                    data-bs-toggle="modal" data-bs-target="#myModal">
+                    <div class="d-flex flex-column">
+                        <span
+                            :class="favEvents.length===0?'fw-bolder fs-6':'fw-bolder text-white fs-6'">Favs!</span>
+                        <i class="fa fa-heart"></i>
+                    </div>
+                </button>
+            </div>
         </template>
         <!-- MODAL -->
         <div class="modal" id="myModal">
