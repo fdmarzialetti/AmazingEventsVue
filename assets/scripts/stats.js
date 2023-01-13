@@ -19,14 +19,7 @@ createApp({
             .then(data => {
                 this.failPromise=false
                 this.events = data.events
-                // agrego la propiedad percent a los eventos
-                this.events.forEach(e => e.percent = (e.assistance * 100 / e.capacity).toFixed(2))
-                // filtro por eventos con asistencia y ordeno por porcentaje
-                let evsByAttPcent = data.events.filter(e => e.assistance).sort((e1, e2) => e1.percent - e2.percent)
-                // variables de la tabla general
-                this.largerCapacity = data.events.sort((e1, e2) => e2.capacity - e1.capacity)[0]
-                this.lowestPercentage = evsByAttPcent[0]
-                this.higherPercentage = evsByAttPcent[evsByAttPcent.length - 1]
+                this.createGeneralStats()
                 this.createCategoryStats(this.events.filter(e => e.estimate), this.upcommingStats)
                 this.createCategoryStats(this.events.filter(e => e.assistance), this.pastStats)
                 this.loadData = true
@@ -52,6 +45,13 @@ createApp({
                 categoryStats.name = category
                 list.push(categoryStats)
             })
+        },
+        createGeneralStats: function(){
+                this.largerCapacity = this.events.sort((e1, e2) => e2.capacity - e1.capacity)[0]
+                this.events.forEach(e => e.percent = (e.assistance * 100 / e.capacity).toFixed(2))
+                let evsByAttPcent = this.events.filter(e => e.assistance).sort((e1, e2) => e1.percent - e2.percent)
+                this.lowestPercentage = evsByAttPcent[0]
+                this.higherPercentage = evsByAttPcent[evsByAttPcent.length - 1]
         }
     }
 }).mount('#app')
